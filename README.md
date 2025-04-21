@@ -1,6 +1,10 @@
 # HarMonize - Draw Music in Your Browser
 
-HarMonize is a simple static web application that lets you create music through drawing. As you draw shapes on the canvas, they are transformed into musical notes and patterns through Fourier analysis.
+HarMonize is an interactive web application that lets you create music through drawing. As you draw shapes on the canvas, they are transformed into musical notes and patterns in real-time.
+
+## 🎵 Live Demo
+
+Visit [https://harmonize.vercel.app](https://harmonize.vercel.app) to try it out!
 
 ## Features
 
@@ -8,6 +12,7 @@ HarMonize is a simple static web application that lets you create music through 
 - Choose different instruments and sound settings
 - Adjustable stroke width and color
 - Simple, intuitive interface
+- Audio permissions handler for a better user experience
 
 ## No Server Required!
 
@@ -17,14 +22,27 @@ This is a completely client-side application with no backend. To use it:
    - Double-click the file
    - Or drag it into your browser window
 
+## Recent Updates
+
+### 🔊 Audio Improvements
+- Added a dedicated AudioInitializer component that helps users enable sound with a single click
+- Fixed issues with audio stopping after extended use
+- Improved error handling and resource management
+- Better browser compatibility with audio context permissions
+
+### 🚀 Vercel Deployment
+- Project now configured for easy deployment to Vercel
+- Added appropriate build scripts and configuration files
+
 ## Development
 
 If you want to make changes to the source code:
 
-1. Make your changes in the `src` directory
-2. Run `npm install` to install dependencies (only needed once)
-3. Run `npm run build` to rebuild the application
-4. Open `public/index.html` in your browser to see your changes
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Run `npm run dev` to start the development server
+4. Make your changes in the `src` directory
+5. Run `npm run build` to build for production
 
 ## How It Works
 
@@ -44,23 +62,24 @@ The application is completely static - all processing happens in your browser wi
 - Play or replay your generated composition
 - Works offline — no internet required after load
 
-## 🧱 Project Structure (Browser-Only)
+## 🧱 Project Structure
 
 ```
-/public
-  └── index.html               # Entry point, includes bundled scripts and Tailwind
+/public               # Static assets and compiled output
+  └── index.html     # Entry point
 /src
-├── App.tsx                    # Main React component
+├── App.tsx          # Main React component
 ├── components/
-│   ├── Canvas.tsx             # Drawing interface + stroke data tracking
-│   ├── Toolbar.tsx            # UI controls: clear, play, options
-│   └── SoundEngine.ts         # Audio generation using Tone.js
+│   ├── AudioInitializer.tsx  # Component to handle audio permissions
+│   ├── Canvas.tsx            # Drawing interface + stroke data tracking
+│   ├── Toolbar.tsx           # UI controls: clear, play, options
+│   └── SoundEngine.ts        # Audio generation using Tone.js
 ├── hooks/
-│   └── useCanvas.ts           # Custom hook for drawing logic
+│   └── useCanvas.ts         # Custom hook for drawing logic
 ├── utils/
-│   └── mapDrawingToSound.ts   # Translates drawing data to musical parameters
-├── main.tsx                   # Renders the app
-└── index.css                  # Tailwind CSS imports
+│   └── mapDrawingToSound.ts # Translates drawing data to musical parameters
+├── main.tsx                 # Renders the app
+└── index.css                # Tailwind CSS imports
 ```
 
 ## 🔊 How It Works
@@ -81,6 +100,7 @@ The application is completely static - all processing happens in your browser wi
 - Built on the Web Audio API via Tone.js
 - Synths triggered based on the interpreted stroke data
 - Modular: easily swap out synths, scales, or effects
+- Automatic resource cleanup to prevent audio issues
 
 ```typescript
 synth.triggerAttackRelease("C4", "8n", Tone.now());
@@ -96,6 +116,7 @@ All frontend:
 | TypeScript | Type-safe logic |
 | Tailwind CSS | Utility-first responsive UI |
 | Tone.js | Audio synthesis and sequencing |
+| Webpack | Module bundling |
 
 ## 🛠 Getting Started
 
@@ -103,7 +124,7 @@ All frontend:
 
 1. Clone the repository
    ```
-   git clone https://github.com/yourusername/harmonize.git
+   git clone https://github.com/CodingFreeze/Harmonize.git
    cd harmonize
    ```
 
@@ -114,10 +135,10 @@ All frontend:
 
 3. Start development server
    ```
-   npm start
+   npm run dev
    ```
 
-4. Open browser at `http://localhost:9000`
+4. Open browser at the URL shown in the terminal
 
 ### Building for Production
 
@@ -126,6 +147,14 @@ npm run build
 ```
 
 The production-ready files will be in the `dist` directory, which you can deploy to any static host.
+
+## Deployment
+
+This project is configured for easy deployment to Vercel:
+
+1. Push your code to GitHub
+2. Connect your GitHub repository to Vercel
+3. Vercel will automatically detect the build settings
 
 ## ⚠️ Browser Notes
 
