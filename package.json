@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "A web app that transforms drawing into generative music",
   "scripts": {
-    "dev": "webpack serve --mode development & tailwindcss -i ./src/index.css -o ./public/output.css --watch",
-    "build": "webpack --mode production && tailwindcss -i ./src/index.css -o ./public/output.css",
+    "dev": "webpack serve --mode development & tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
+    "build": "webpack --mode production && tailwindcss -i ./src/index.css -o ./dist/output.css && node copy-html.js",
     "start": "serve -s dist",
-    "build:css": "tailwindcss -i ./src/index.css -o ./public/output.css"
+    "build:css": "tailwindcss -i ./src/index.css -o ./dist/output.css"
   },
   "dependencies": {
     "react": "^18.2.0",
