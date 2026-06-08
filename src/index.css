@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hallmark · macrostructure: Workbench (tool) · genre: atmospheric · tone: technical
- * theme: brand-preserved (cyan/pink) · accent hue: cyan 200° + pink 330°
- * pre-emit critique: P4 H4 E4 S4 R5 V4
- */
-
 @layer base {
   :root {
     /* Spring-flavoured easings — never linear */
