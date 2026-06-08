@@ -4,6 +4,8 @@ HarMonize is an interactive web application that lets you create music through d
 
 **Live demo:** _redeploying — run locally via the steps below_
 
+![HarMonize interface](docs/media/harmonize-ui.png)
+
 ## Features
 
 - Draw shapes that transform into musical patterns
