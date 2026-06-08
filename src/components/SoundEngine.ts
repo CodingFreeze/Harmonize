@@ -16,16 +16,18 @@ export interface Stroke {
 }
 
 class SoundEngine {
-  private synth: any; // Use any type to avoid TypeScript errors
+  // Holds whichever synth variant the current instrument selects; the variants
+  // expose different node properties, so this stays loosely typed.
+  private synth: any;
   private isInitialized: boolean = false;
   private strokes: Stroke[] = [];
   private playing: boolean = false;
   private currentInstrument: string = 'synth';
   private currentStylus: string = 'default';
-  private sequence: any = null; // Use any type to avoid TypeScript errors
-  private reverb: any; // Use any type to avoid TypeScript errors
-  private delay: any; // Use any type to avoid TypeScript errors
-  private volume: any; // Volume node
+  private sequence: Tone.Sequence | null = null;
+  private reverb!: Tone.Reverb;
+  private delay!: Tone.FeedbackDelay;
+  private volume!: Tone.Volume;
   private currentVolume: number = 25; // Default mid-range volume (0-75)
   private playbackSpeed: number = 1; // Default normal speed (1x)
   private startTime: number = 0;
@@ -56,7 +58,7 @@ class SoundEngine {
       // Create cleaner effects and volume control
       this.reverb = new Tone.Reverb(1.0).toDestination();
       this.delay = new Tone.FeedbackDelay(0.2, 0.2).toDestination();
-      this.volume = new (Tone as any).Volume(-3).toDestination();
+      this.volume = new Tone.Volume(-3).toDestination();
       
       // Adjust effect levels for cleaner sound
       if (this.reverb.wet) this.reverb.wet.value = 0.3;
@@ -349,7 +351,7 @@ class SoundEngine {
       
       // Recreate volume node if needed
       if (!this.volume) {
-        this.volume = new (Tone as any).Volume(-3).toDestination();
+        this.volume = new Tone.Volume(-3).toDestination();
       }
       
       // Connect through the volume node
