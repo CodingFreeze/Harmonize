@@ -2,9 +2,7 @@
 
 HarMonize is an interactive web application that lets you create music through drawing. As you draw shapes on the canvas, they are transformed into musical notes and patterns in real-time.
 
-## 🎵 Live Demo
-
-Visit [https://harmonize.vercel.app](https://harmonize.vercel.app) to try it out!
+**Live demo:** _redeploying — see screenshots below_
 
 ## Features
 
@@ -49,7 +47,7 @@ If you want to make changes to the source code:
 HarMonize uses:
 - React for the UI components
 - Tone.js for sound generation
-- Fourier analysis to transform drawn shapes into musical patterns
+- A direct linear mapping to transform drawn strokes into musical parameters — X position to pitch, Y position to loudness, and stroke speed to note duration (no FFT/Fourier analysis is performed)
 - TailwindCSS for styling
 
 The application is completely static - all processing happens in your browser with no server required.
