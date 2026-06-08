@@ -75,15 +75,21 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col">
-      <header className="bg-gray-800 py-4 px-6 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <svg className="w-8 h-8 text-primary-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
-          </svg>
-          <h1 className="text-xl font-bold text-white">HarMonize</h1>
+    <div className="min-h-screen app-shell flex flex-col">
+      <header className="sticky top-0 z-20 py-4 px-6 flex items-center justify-between border-b border-[var(--hairline)] bg-[var(--surface-0)]/80 backdrop-blur-md">
+        <div className="flex items-center gap-3">
+          <span className="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary-400/25 to-secondary-500/20 ring-1 ring-primary-400/30 shadow-[0_4px_18px_-6px_rgba(56,189,248,0.5)]">
+            <svg className="w-5 h-5 text-primary-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+            </svg>
+          </span>
+          <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-200 to-secondary-300 bg-clip-text text-transparent">
+            HarMonize
+          </h1>
         </div>
-        <div className="text-sm text-gray-400">Draw to create music</div>
+        <div className="hidden sm:block text-xs font-medium uppercase tracking-[0.16em] text-gray-500">
+          Draw to create music
+        </div>
       </header>
 
       <div className="flex flex-col md:flex-row flex-1">

@@ -81,9 +81,9 @@ const Toolbar: React.FC<ToolbarProps> = ({
   ];
 
   return (
-    <aside className="bg-gray-800 p-4 w-full md:w-64 border-r border-gray-700 flex flex-col gap-6 overflow-y-auto">
+    <aside className="panel p-5 w-full md:w-72 border-r flex flex-col gap-7 overflow-y-auto">
       <section>
-        <h3 className="text-gray-300 font-semibold mb-2">Controls</h3>
+        <h3 className="section-label mb-3">Controls</h3>
         <div className="flex flex-col gap-2">
           <button 
             className={`btn ${isPlaying ? 'btn-secondary' : 'btn-primary'}`}
@@ -98,7 +98,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </section>
 
       <section>
-        <h3 className="text-gray-300 font-semibold mb-2">Instrument</h3>
+        <h3 className="section-label mb-3">Instrument</h3>
         <select 
           value={instrument}
           onChange={(e) => setInstrument(e.target.value)}
@@ -111,7 +111,10 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </section>
 
       <section>
-        <h3 className="text-gray-300 font-semibold mb-2">Volume: {volume}%</h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="section-label">Volume</h3>
+          <span className="text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{volume}%</span>
+        </div>
         <input 
           type="range" 
           min="0" 
@@ -136,7 +139,10 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </section>
 
       <section>
-        <h3 className="text-gray-300 font-semibold mb-2">Playback Speed: {playbackSpeed.toFixed(1)}x</h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="section-label">Playback Speed</h3>
+          <span className="text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{playbackSpeed.toFixed(1)}x</span>
+        </div>
         <input 
           type="range" 
           min="0.1" 
@@ -154,7 +160,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </section>
 
       <section>
-        <h3 className="text-gray-300 font-semibold mb-2">Stylus</h3>
+        <h3 className="section-label mb-3">Stylus</h3>
         <select 
           value={selectedStylus}
           onChange={(e) => setSelectedStylus(e.target.value)}
@@ -171,9 +177,9 @@ const Toolbar: React.FC<ToolbarProps> = ({
 
       <section>
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-gray-300 font-semibold">Stroke Color</h3>
-          <button 
-            className="text-gray-400 hover:text-white text-sm"
+          <h3 className="section-label">Stroke Color</h3>
+          <button
+            className="text-gray-400 hover:text-primary-300 text-xs font-medium transition-colors"
             onClick={() => setShowColorPicker(!showColorPicker)}
           >
             {showColorPicker ? 'Simple View' : 'More Colors'}
@@ -185,9 +191,11 @@ const Toolbar: React.FC<ToolbarProps> = ({
             {colorOptions.map((color) => (
               <button
                 key={color.value}
-                className={`h-8 w-8 rounded-full ${
-                  strokeColor === color.value ? 'ring-2 ring-white scale-110' : ''
-                } transition-all hover:scale-110`}
+                className={`h-8 w-8 rounded-full transition-transform duration-200 ease-out hover:scale-110 ${
+                  strokeColor === color.value
+                    ? 'ring-2 ring-white ring-offset-2 ring-offset-[var(--surface-1)] scale-110 shadow-lg'
+                    : 'ring-1 ring-white/10'
+                }`}
                 style={{ backgroundColor: color.value }}
                 onClick={() => setStrokeColor(color.value)}
                 title={color.label}
@@ -208,8 +216,10 @@ const Toolbar: React.FC<ToolbarProps> = ({
             {colorOptions.slice(0, 5).map((color) => (
               <button
                 key={color.value}
-                className={`h-8 w-8 rounded-full ${
-                  strokeColor === color.value ? 'ring-2 ring-white' : ''
+                className={`h-8 w-8 rounded-full transition-transform duration-200 ease-out hover:scale-110 ${
+                  strokeColor === color.value
+                    ? 'ring-2 ring-white ring-offset-2 ring-offset-[var(--surface-1)] scale-110 shadow-lg'
+                    : 'ring-1 ring-white/10'
                 }`}
                 style={{ backgroundColor: color.value }}
                 onClick={() => setStrokeColor(color.value)}
@@ -221,7 +231,10 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </section>
 
       <section>
-        <h3 className="text-gray-300 font-semibold mb-2">Stroke Width: {strokeWidth}px</h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="section-label">Stroke Width</h3>
+          <span className="text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{strokeWidth}px</span>
+        </div>
         <input 
           type="range" 
           min="1" 
@@ -232,17 +245,17 @@ const Toolbar: React.FC<ToolbarProps> = ({
         />
       </section>
 
-      <section className="mt-auto">
+      <section className="mt-auto pt-5 border-t border-[var(--hairline)]">
         <div className="text-gray-400 text-sm">
-          <p className="mb-2">Tips:</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Draw horizontally for melody</li>
-            <li>Draw vertically for dynamics</li>
-            <li>Speed affects note duration</li>
-            <li>Try different stylus types</li>
+          <h3 className="section-label mb-3">Tips</h3>
+          <ul className="space-y-1.5">
+            <li className="flex gap-2"><span className="text-primary-400">·</span> Draw horizontally for melody</li>
+            <li className="flex gap-2"><span className="text-primary-400">·</span> Draw vertically for dynamics</li>
+            <li className="flex gap-2"><span className="text-primary-400">·</span> Speed affects note duration</li>
+            <li className="flex gap-2"><span className="text-primary-400">·</span> Try different stylus types</li>
           </ul>
-          <button 
-            className="mt-4 w-full text-primary-400 hover:text-primary-300 border border-gray-700 rounded py-1 px-2 text-center"
+          <button
+            className="mt-4 w-full text-primary-300 hover:text-white border border-[var(--hairline)] hover:border-primary-400/50 hover:bg-primary-400/10 rounded-xl py-2 px-2 text-center text-sm font-medium transition-all duration-200 ease-out"
             onClick={() => setShowInstructions(true)}
           >
             Show Instructions
