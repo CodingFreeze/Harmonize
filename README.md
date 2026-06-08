@@ -2,7 +2,7 @@
 
 HarMonize is an interactive web application that lets you create music through drawing. As you draw shapes on the canvas, they are transformed into musical notes and patterns in real-time.
 
-**Live demo:** _redeploying — see screenshots below_
+**Live demo:** _redeploying — run locally via the steps below_
 
 ## Features
 
