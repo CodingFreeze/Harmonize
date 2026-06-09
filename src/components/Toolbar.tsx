@@ -113,7 +113,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <section>
         <div className="flex items-center justify-between mb-3">
           <h3 className="section-label">Volume</h3>
-          <span className="text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{volume}%</span>
+          <span className="num text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{volume}%</span>
         </div>
         <input 
           type="range" 
@@ -141,7 +141,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <section>
         <div className="flex items-center justify-between mb-3">
           <h3 className="section-label">Playback Speed</h3>
-          <span className="text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{playbackSpeed.toFixed(1)}x</span>
+          <span className="num text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{playbackSpeed.toFixed(1)}x</span>
         </div>
         <input 
           type="range" 
@@ -233,7 +233,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <section>
         <div className="flex items-center justify-between mb-3">
           <h3 className="section-label">Stroke Width</h3>
-          <span className="text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{strokeWidth}px</span>
+          <span className="num text-xs font-semibold text-primary-300 tabular-nums px-2 py-0.5 rounded-md bg-primary-400/10">{strokeWidth}px</span>
         </div>
         <input 
           type="range" 
